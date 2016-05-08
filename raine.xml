@@ -1,0 +1,80 @@
+<dialog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="WatsonDialogDocument_1.0.xsd">
+    <flow>
+      <folder label="Main" id="Main">
+	<output>
+          <prompt selectionType="RANDOM">
+            <item>Hello, my name is Raine! I'm here to help you and provide assistance. How are you doing?</item>
+          </prompt>
+          <goto ref="getUserInput_1"/>
+	</output>
+	<getUserInput id="getUserInput_1">
+          <search ref="help_options"/>
+          <default>
+            <output>
+              <prompt selectionType="RANDOM">
+                <item>
+                  I am sorry, I didn't quite catch that. Do you mind saying it again?
+                </item>
+              </prompt>
+            </output>
+          </default>
+	</getUserInput>
+      </folder>
+
+      <folder label="Library" id="Library">
+        <folder label="Live Content" id="help_options">
+	  <input>
+	    <grammar>
+	      <item>$Bullying </item>
+	      <item>$bullying </item>
+	      <item>$talk to someone </item>
+	      <item> $ help </item>
+	    </grammar>
+	    <output>
+              <prompt selectionType="RANDOM">
+                <item>I'm sorry to hear that and I will be here for you. What is your name?</item>
+		<item>I will try to understand. What is your name?</item>
+              </prompt>
+            </output>
+	  </input>
+	  <input>
+	    <grammar>
+	      <item> $Fine </item>
+	      <item> $fine </item>
+	      <item> $Great </item>
+	      <item> $great </item>
+	      <item> $magnificent </item>
+	      <item> $Magnificent </item>
+	      <item> $good </item>
+	      <item> $Good </item>
+	    </grammar>
+	    <output>
+	      <prompt selectionType="RANDOM">
+		<item> Sounds splendid! What's your name? </item>
+		<item> NICE I LIKE IT. What's your name? </item>
+		<item> Nice one friend, I wish you more good fortune. What is your name? </item>
+	      </prompt>
+	    </output>
+	    <input>
+	      <getUserInput>
+	      </getUserInput>
+	      <output>
+		<prompt selectionType="RANDOM">
+		  <item> That's a good name </item>
+		</prompt>
+	      </output>
+	    </input>
+	  </input>
+	</folder>
+	<folder label="Storage" id="Storage"></folder>
+      </folder>
+      <folder label="Concepts" id="Concepts"></folder>
+    </flow>
+
+    <variables>
+      <var_folder name ="Name">
+	<var name="userName" type="TEXT" description="Name of User"> </var>
+      </var_folder>
+    </variables>
+</dialog>
+
